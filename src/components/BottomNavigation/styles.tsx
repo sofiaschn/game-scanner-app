@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { colors } from '../../colors';
 
-export const NavigationContainer = styled.View`
+export const BottomBarContainer = styled.View`
   background-color: ${colors.secondary};
   height: 8%;
   align-items: center;
