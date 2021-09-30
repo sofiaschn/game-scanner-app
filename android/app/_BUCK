@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.workoutjournal",
+    package = "com.gamescanner",
 )
 
 android_resource(
     name = "res",
-    package = "com.workoutjournal",
+    package = "com.gamescanner",
     res = "src/main/res",
 )
 
