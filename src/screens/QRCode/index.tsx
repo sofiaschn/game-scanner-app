@@ -1,14 +1,14 @@
-/* eslint-disable no-eval */
 import React from 'react';
-import 'react-native-gesture-handler';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import BottomNavigation from '../../components/BottomNavigation';
 import { Container } from './styles';
 
-const QRCode = () => {
+const QRCode = ({ navigation }: any) => {
     return (
         <Container>
-            <QRCodeScanner onRead={(read) => eval(read.data)} />
+            <QRCodeScanner
+                onRead={(QRData) => navigation.navigate('Game', { QRData })}
+            />
             <BottomNavigation />
         </Container>
     );
