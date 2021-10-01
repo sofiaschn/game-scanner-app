@@ -7,7 +7,11 @@ const QRCode = ({ navigation }: any) => {
     return (
         <Container>
             <QRCodeScanner
-                onRead={(QRData) => navigation.navigate('Game', { QRData })}
+                onRead={(QRData) =>
+                    navigation.navigate('Game', {
+                        game: JSON.parse(QRData.data),
+                    })
+                }
             />
             <BottomNavigation />
         </Container>

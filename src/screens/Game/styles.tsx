@@ -10,4 +10,11 @@ export const GameContainer = styled.View`
     flex: 1;
     align-items: center;
     justify-content: center;
+    margin-bottom: 3%;
+`;
+
+export const CanvasContainer = styled.View`
+    flex: 1;
+    align-items: center;
+    justify-content: center;
 `;

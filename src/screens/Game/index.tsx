@@ -1,47 +1,38 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-eval */
 import React from 'react';
-import { Button } from 'react-native';
 import BottomNavigation from '../../components/BottomNavigation';
-import { Container, GameContainer } from './styles';
+import { Container, GameContainer, CanvasContainer } from './styles';
 import Canvas from 'react-native-canvas';
+import Gamepad from '../../components/Gamepad';
+import { storage } from '../../services/storage';
+import { GameObject } from '../../interfaces/GameObject';
 
 const Game = ({ route }: any) => {
-    const gameData: string = route.params.QRData.data;
+    const game: GameObject = route.params.game;
+    storage.storeGame(game);
     let direction = 'up';
 
     const handleCanvas = (canvas: any) => {
-        eval(gameData);
+        if (canvas) {
+            canvas.height = 256;
+            canvas.width = 256;
+            eval(game.code);
+        }
     };
 
     return (
         <Container>
             <GameContainer>
-                <Canvas ref={handleCanvas} />
+                <CanvasContainer>
+                    <Canvas ref={handleCanvas} />
+                </CanvasContainer>
+                <Gamepad
+                    onPressArrow={(arrow) => {
+                        direction = arrow;
+                    }}
+                />
             </GameContainer>
-            <Button
-                title={'up'}
-                onPress={() => {
-                    direction = 'up';
-                }}
-            />
-            <Button
-                title={'down'}
-                onPress={() => {
-                    direction = 'down';
-                }}
-            />
-            <Button
-                title={'left'}
-                onPress={() => {
-                    direction = 'left';
-                }}
-            />
-            <Button
-                title={'right'}
-                onPress={() => {
-                    direction = 'right';
-                }}
-            />
             <BottomNavigation />
         </Container>
     );

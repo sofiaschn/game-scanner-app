@@ -1,19 +1,29 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import BottomNavigation from '../../components/BottomNavigation';
-import Card from '../../components/Card';
+import GameCard from '../../components/GameCard';
+import { GameObject } from '../../interfaces/GameObject';
+import { storage } from '../../services/storage';
 import { Container, InformationContainer } from './styles';
 
 const Home = () => {
+    const [games, setGames] = useState([] as GameObject[]);
+
+    useEffect(() => {
+        getGames();
+    }, []);
+
+    const getGames = async () => {
+        setGames(await storage.getGames());
+    };
+
     return (
         <Container>
             <InformationContainer>
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {games.map((game) => {
+                    return <GameCard key={game.id} game={game} />;
+                })}
             </InformationContainer>
             <BottomNavigation />
         </Container>

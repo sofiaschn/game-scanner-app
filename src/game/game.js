@@ -1,6 +1,3 @@
-canvas.height = 256;
-canvas.width = 256;
-
 let ctx = canvas.getContext('2d');
 let snake = [[8, 8]],
     apple = [4, 4],
