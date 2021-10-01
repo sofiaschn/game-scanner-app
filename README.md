@@ -3,6 +3,12 @@
 </h1>
 Game Scanner is a way to run simple games directly from a QR Code, without need for an internet connection.
 
+# Usage
+Try installing the app, going into the QR Code screen on the bottom menu and scanning the following QR Code:
+<p align="center">
+  <img src="https://github.com/sofiaschn/game-scanner/blob/main/src/game/qrcode.png?raw=true" alt="QRCode for a Snake game" class="center"> 
+</p>
+
 # How it works?
 The app expects to read a QR Code containing simple JS code, which will then be executed. The app is built using React Native and Typescript.
 
