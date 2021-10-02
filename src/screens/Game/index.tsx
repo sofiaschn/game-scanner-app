@@ -3,7 +3,7 @@
 import React from 'react';
 import BottomNavigation from '../../components/BottomNavigation';
 import { Container, GameContainer, CanvasContainer } from './styles';
-import Canvas from 'react-native-canvas';
+import { GCanvasView } from '@flyskywhy/react-native-gcanvas';
 import Gamepad from '../../components/Gamepad';
 import { storage } from '../../services/storage';
 import { Directions, GameObject } from '../../interfaces/Game';
@@ -25,7 +25,10 @@ const Game = ({ route }: any) => {
         <Container>
             <GameContainer>
                 <CanvasContainer>
-                    <Canvas ref={handleCanvas} />
+                    <GCanvasView
+                        onCanvasCreate={handleCanvas}
+                        style={{ width: 256, height: 256 }}
+                    />
                 </CanvasContainer>
                 <Gamepad
                     onPressArrow={(arrow) => {
