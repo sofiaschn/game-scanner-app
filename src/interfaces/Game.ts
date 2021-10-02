@@ -3,3 +3,5 @@ export interface GameObject {
     id: number;
     code: string;
 }
+
+export type Directions = 'up' | 'down' | 'left' | 'right';

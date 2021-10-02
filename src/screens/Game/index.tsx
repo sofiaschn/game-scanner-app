@@ -6,12 +6,12 @@ import { Container, GameContainer, CanvasContainer } from './styles';
 import Canvas from 'react-native-canvas';
 import Gamepad from '../../components/Gamepad';
 import { storage } from '../../services/storage';
-import { GameObject } from '../../interfaces/GameObject';
+import { Directions, GameObject } from '../../interfaces/Game';
 
 const Game = ({ route }: any) => {
     const game: GameObject = route.params.game;
     storage.storeGame(game);
-    let direction = 'up';
+    let direction: Directions;
 
     const handleCanvas = (canvas: any) => {
         if (canvas) {

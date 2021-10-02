@@ -1,34 +1,32 @@
 import React from 'react';
-import { Button } from 'react-native';
 import {
     ArrowView,
-    BottomArrow,
     ButtonView,
     GamepadContainer,
     MiddleArrows,
-    UpArrow,
 } from './styles';
+import { Directions } from '../../interfaces/Game';
+import Arrow from './Arrow';
 
-const Gamepad: React.FC<{ onPressArrow: (arrow: string) => void }> = ({
-    onPressArrow,
-}) => {
+const Gamepad: React.FC<{
+    onPressArrow: (arrow: Directions) => void;
+}> = ({ onPressArrow }) => {
     return (
         <GamepadContainer>
             <ButtonView></ButtonView>
             <ArrowView>
-                <UpArrow>
-                    <Button onPress={() => onPressArrow('up')} title="up" />
-                </UpArrow>
+                <Arrow direction="up" onPress={() => onPressArrow('up')} />
                 <MiddleArrows>
-                    <Button onPress={() => onPressArrow('left')} title="left" />
-                    <Button
+                    <Arrow
+                        direction="left"
+                        onPress={() => onPressArrow('left')}
+                    />
+                    <Arrow
+                        direction="right"
                         onPress={() => onPressArrow('right')}
-                        title="right"
                     />
                 </MiddleArrows>
-                <BottomArrow>
-                    <Button onPress={() => onPressArrow('down')} title="down" />
-                </BottomArrow>
+                <Arrow direction="down" onPress={() => onPressArrow('down')} />
             </ArrowView>
         </GamepadContainer>
     );

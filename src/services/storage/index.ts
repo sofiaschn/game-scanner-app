@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { GameObject } from '../../interfaces/GameObject';
+import { GameObject } from '../../interfaces/Game';
 
 export const storage = {
     storeGame: async (value: GameObject) => {

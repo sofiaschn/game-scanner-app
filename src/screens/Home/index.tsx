@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import BottomNavigation from '../../components/BottomNavigation';
 import GameCard from '../../components/GameCard';
-import { GameObject } from '../../interfaces/GameObject';
+import { GameObject } from '../../interfaces/Game';
 import { storage } from '../../services/storage';
 import { Container, InformationContainer } from './styles';
 
