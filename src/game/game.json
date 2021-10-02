@@ -1,5 +1,5 @@
 {
-    "name": "snake",
+    "name": "Snake",
     "id": 1,
-    "code": "let ctx=canvas.getContext(\"2d\"),snake=[[8,8]],apple=[4,4],[dx,dy]=[0,0];setInterval(()=>{switch(direction){case\"up\":[dx,dy]=[0,-1];break;case\"down\":[dx,dy]=[0,1];break;case\"left\":[dx,dy]=[-1,0];break;case\"right\":[dx,dy]=[1,0]}if(snake.unshift([snake[0][0]+dx&15,snake[0][1]+dy&15]),\"\"+snake[0]==apple)do{apple=[Math.floor(16*Math.random()),Math.floor(16*Math.random())]}while(snake.some(e=>\"\"+e==apple));else snake.slice(1).some(e=>\"\"+e==snake[0])?snake.splice(1):snake.pop();ctx.fillStyle=\"white\",ctx.fillRect(0,0,canvas.height,canvas.width),ctx.fillStyle=\"red\",ctx.fillRect(16*apple[0],16*apple[1],16,16),ctx.fillStyle=\"lime\",snake.forEach(([e,a])=>ctx.fillRect(16*e,16*a,16,16))},125);"
+    "code": "let ctx=canvas.getContext(\"2d\"),random=()=>[Math.floor(16*Math.random()),Math.floor(16*Math.random())],snake=[random()],apple=random(),[dx,dy]=[0,0];setInterval(()=>{if(\"up\"==direction&&1!==dy?[dx,dy]=[0,-1]:\"down\"==direction&&-1!==dy?[dx,dy]=[0,1]:\"left\"==direction&&1!==dx?[dx,dy]=[-1,0]:\"right\"==direction&&-1!==dx&&([dx,dy]=[1,0]),snake.unshift([snake[0][0]+dx&15,snake[0][1]+dy&15]),\"\"+snake[0]==apple)do{apple=random()}while(snake.some(e=>\"\"+e==apple));else snake.slice(1).some(e=>\"\"+e==snake[0])?snake.splice(1):snake.pop();ctx.fillStyle=\"white\",ctx.fillRect(0,0,canvas.height,canvas.width),ctx.fillStyle=\"red\",ctx.fillRect(16*apple[0],16*apple[1],16,16),ctx.fillStyle=\"lime\",snake.forEach(([e,a])=>ctx.fillRect(16*e,16*a,16,16))},250);"
 }
