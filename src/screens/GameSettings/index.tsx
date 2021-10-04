@@ -13,7 +13,7 @@ const GameSettings = ({ route, navigation }: any) => {
             <SettingsContainer>
                 <Button
                     onPress={async () => {
-                        storage.deleteGame(game);
+                        await storage.deleteGame(game);
                         navigation.goBack();
                     }}
                     title="Delete game"
