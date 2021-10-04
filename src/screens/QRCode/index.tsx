@@ -21,7 +21,12 @@ const QRCode = ({ navigation }: any) => {
     return (
         <Container>
             <QRCodeScanner onRead={onRead} />
-            {isModalVisible && <Modal />}
+            {isModalVisible && (
+                <Modal
+                    text="Error when reading QR Code, please try again."
+                    icon="error"
+                />
+            )}
             <BottomNavigation />
         </Container>
     );
