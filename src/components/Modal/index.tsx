@@ -22,10 +22,10 @@ type Buttons = {
 const Modal: React.FC<{
     text: string;
     icon: Icons;
+    visible: boolean;
+    onPressOut?: () => void;
     buttons?: Buttons;
-}> = ({ text, icon, buttons = {} }) => {
-    const [isVisible, setVisible] = useState(true);
-
+}> = ({ text, icon, visible, onPressOut, buttons = {} }) => {
     const getIcon = () => {
         const size = 50;
         if (icon === 'error' || icon === 'warn') {
@@ -40,10 +40,10 @@ const Modal: React.FC<{
 
     return (
         <>
-            {isVisible && (
+            {visible && (
                 <ModalTapDetection
-                    onPress={() => setVisible(false)}
-                    disabled={Object.keys(buttons).length > 1}>
+                    onPress={onPressOut}
+                    disabled={typeof onPressOut === 'undefined'}>
                     <ModalContainer>
                         {getIcon()}
                         <ModalText>{text}</ModalText>
