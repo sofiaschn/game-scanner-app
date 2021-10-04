@@ -15,4 +15,16 @@ export const storage = {
         const games = await AsyncStorage.getItem('gamesArray');
         return games ? JSON.parse(games) : [];
     },
+
+    deleteGame: async (value: GameObject) => {
+        const games = await AsyncStorage.getItem('gamesArray');
+        const gamesArray: GameObject[] = JSON.parse(games!);
+        const index = gamesArray.findIndex((game) => value.id === game.id);
+        if (index === -1) {
+            return;
+        }
+        gamesArray.splice(index, 1);
+        const stringifiedArray = JSON.stringify(gamesArray);
+        await AsyncStorage.setItem('gamesArray', stringifiedArray);
+    },
 };

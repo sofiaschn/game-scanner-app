@@ -17,7 +17,8 @@ const GameCard: React.FC<{ game: GameObject }> = ({ game }) => {
 
     return (
         <GameCardContainer>
-            <SettingsContainer>
+            <SettingsContainer
+                onPress={() => navigation.navigate('GameSettings', { game })}>
                 <AdjustmentsIcon size={25} color={colors.button} />
             </SettingsContainer>
             <TextContainer>
