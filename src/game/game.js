@@ -1,33 +1,37 @@
-let ctx = canvas.getContext('2d'),
-    random = () => [Math.floor(Math.random() * 16),Math.floor(Math.random() * 16)],
-    snake = [random()],
-    apple = random(),
-    [dx, dy] = [0, 0];
+_xs('white');
+_xr(0, 0, _c.width, _c.height);
+let s = [[3, 5]];
+let a = [11, 5];
+let [vx, vy] = [0, 0];
 
-setInterval(() => {
-    if (direction == 'up' && dy !== 1) {
-      [dx, dy] = [0, -1];
-    } else if (direction == 'down' && dy !== -1) {
-      [dx, dy] = [0, 1];
-    } else if (direction == 'left' && dx !== 1) {
-      [dx, dy] = [-1, 0];
-    } else if (direction == 'right' && dx !== -1) {
-      [dx, dy] = [1, 0];
-    }
-    snake.unshift([(snake[0][0] + dx) & 15, (snake[0][1] + dy) & 15]);
-    if ('' + snake[0] == apple) {
-        do {
-            apple = random();
-        } while (snake.some((seg) => '' + seg == apple));
-    } else if (snake.slice(1).some((seg) => '' + seg == snake[0])) {
-        snake.splice(1);
+let i = setInterval(() => {
+    let d = direction;
+
+    [vx, vy] = {
+        [d]: [vx, vy],
+        right: [vx || 1, 0],
+        left: [vx || -1, 0],
+        down: [0, vy || -1],
+        up: [0, vy || 1],
+    }[d];
+
+    s.unshift([s[0][0] + vx, s[0][1] - vy]);
+    let h = s[0];
+    if ('' + s[0] == a) {
+        while (s.some((v) => '' + v == a)) {
+            let r = Math.floor(Math.random() * 16);
+            a = [r, r];
+        }
     } else {
-        snake.pop();
+        s.slice(1, -1).some((v) => '' + v == h) || /16|-/.test('' + s[0])
+            ? clearInterval(i)
+            : s.pop();
     }
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, canvas.height, canvas.width);
-    ctx.fillStyle = 'red';
-    ctx.fillRect(apple[0] * 16, apple[1] * 16, 16, 16);
-    ctx.fillStyle = 'lime';
-    snake.forEach(([x, y]) => ctx.fillRect(x * 16, y * 16, 16, 16));
+
+    _xs('white');
+    _xr(0, 0, _c.height, _c.width);
+    _xs('red');
+    _xr(a[0] * 16, a[1] * 16, 16, 16);
+    _xs('lime');
+    s.forEach(([x, y]) => _xr(x * 16, y * 16, 16, 16));
 }, 250);

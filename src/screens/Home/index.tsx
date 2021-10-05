@@ -18,7 +18,6 @@ const Home = () => {
         setRefreshing(true);
         setGames(await storage.getGames());
         setRefreshing(false);
-        console.log('Updated Home');
     };
 
     useEffect(() => {
