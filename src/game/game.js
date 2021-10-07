@@ -1,5 +1,8 @@
+let n = 16;
+let w = Math.floor(_c.width / n) * n;
+let j = w / n;
 _xs('white');
-_xr(0, 0, _c.width, _c.height);
+_xr(0, 0, w, w);
 let s = [[3, 5]];
 let a = [11, 5];
 let [vx, vy] = [0, 0];
@@ -17,21 +20,22 @@ let i = setInterval(() => {
 
     s.unshift([s[0][0] + vx, s[0][1] - vy]);
     let h = s[0];
-    if ('' + s[0] == a) {
+    if ('' + h == a) {
         while (s.some((v) => '' + v == a)) {
-            let r = Math.floor(Math.random() * 16);
-            a = [r, r];
+            a = [Math.floor(Math.random() * n), Math.floor(Math.random() * n)];
         }
     } else {
-        s.slice(1, -1).some((v) => '' + v == h) || /16|-/.test('' + s[0])
-            ? clearInterval(i)
-            : s.pop();
+        if (s.slice(1, -1).some((v) => '' + v == h) || /16|-/.test('' + h)) {
+            return clearInterval(i);
+        }
+
+        s.pop();
     }
 
     _xs('white');
-    _xr(0, 0, _c.height, _c.width);
+    _xr(0, 0, w, w);
     _xs('red');
-    _xr(a[0] * 16, a[1] * 16, 16, 16);
+    _xr(a[0] * j, a[1] * j, j, j);
     _xs('lime');
-    s.forEach(([x, y]) => _xr(x * 16, y * 16, 16, 16));
+    s.forEach(([x, y]) => _xr(x * j, y * j, j, j));
 }, 250);

@@ -19,9 +19,9 @@ const Game = ({ route }: any) => {
 
     const handleCanvas = (canvas: HTMLCanvasElement) => {
         const _c = canvas;
-        let _x = _c.getContext('2d');
-        let _xs = (color: string) => (_x!.fillStyle = color);
-        let _xr = (x: number, y: number, maxX: number, maxY: number) =>
+        const _x = _c.getContext('2d');
+        const _xs = (color: string) => (_x!.fillStyle = color);
+        const _xr = (x: number, y: number, maxX: number, maxY: number) =>
             _x!.fillRect(x, y, maxX, maxY);
 
         eval(game.code);
