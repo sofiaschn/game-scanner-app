@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="https://github.com/sofiaschn/game-scanner/blob/main/ios/GameScanner/Images.xcassets/AppIcon.appiconset/180.png?raw=true" alt="Game Scanner icon" class="center"> 
+</p>
 <h1 align="center">
   Game Scanner
 </h1>
