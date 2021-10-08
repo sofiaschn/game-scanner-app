@@ -12,7 +12,7 @@ target 'GameScanner' do
     :hermes_enabled => false
   )
 
-  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+  pod "GCanvas", :path => "../node_modules/@flyskywhy/react-native-gcanvas/GCanvas.podspec"
 
   target 'GameScannerTests' do
     inherit! :complete
