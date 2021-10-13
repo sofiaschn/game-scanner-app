@@ -18,7 +18,8 @@ The app expects to read a QR Code containing simple JS code, which will then be 
 # Install
 To build the app, follow the steps:
   1. Run `yarn install`
-  2. Run `yarn run android`
+  2. Run `yarn start`
+  3. In another terminal, run `yarn run android`
 
 # Acknowledgements
 * [Snake As Short As I Can](https://github.com/guckstift/shortest-js-snake), the game used to test the first QR Code.
