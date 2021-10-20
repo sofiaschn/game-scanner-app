@@ -1,5 +1,0 @@
-{
-    "name": "Snake",
-    "id": 1,
-    "code": "let n=16,w=Math.floor(_c.width/n)*n,j=w/n;_xs('white'),_xr(0,0,w,w);let s=[[3,5]],a=[11,5],[vx,vy]=[0,0],i=setInterval(()=>{let t=direction;[vx,vy]={[t]:[vx,vy],right:[vx||1,0],left:[vx||-1,0],down:[0,vy||-1],up:[0,vy||1]}[t],s.unshift([s[0][0]+vx,s[0][1]-vy]);let e=s[0];if(''+e==a)for(;s.some(t=>''+t==a);)a=[Math.floor(Math.random()*n),Math.floor(Math.random()*n)];else{if(s.slice(1,-1).some(t=>''+t==e)||/16|-/.test(''+e))return clearInterval(i);s.pop()}_xs('white'),_xr(0,0,w,w),_xs('red'),_xr(a[0]*j,a[1]*j,j,j),_xs('lime'),s.forEach(([t,e])=>_xr(t*j,e*j,j,j))},250);"
-}
