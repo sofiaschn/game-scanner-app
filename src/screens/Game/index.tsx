@@ -13,7 +13,7 @@ const Game = ({ route }: any) => {
     const [style, setStyle] = useState({} as CSSProperties);
     const [canvasVisible, setCanvasVisible] = useState(false);
 
-    const game: GameObject = route.params.game;
+    const game: Omit<GameObject, 'id'> = route.params.game;
     storage.storeGame(game);
     let direction: Directions;
 

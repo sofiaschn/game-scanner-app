@@ -45,7 +45,7 @@ const GameSettings = ({ route, navigation }: any) => {
                         <SaveButton
                             onPress={async () => {
                                 game.name = name;
-                                await storage.storeGame(game);
+                                await storage.updateGame(game);
                                 navigation.goBack();
                             }}>
                             <Text>Save</Text>
