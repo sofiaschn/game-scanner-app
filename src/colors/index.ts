@@ -4,4 +4,5 @@ export const colors = {
     text: '#FFFFFF',
     button: '#FFFFFF',
     red: '#EB4444',
+    blue: '#0398FC',
 };
