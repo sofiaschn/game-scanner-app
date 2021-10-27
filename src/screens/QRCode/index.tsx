@@ -12,9 +12,9 @@ const QRCode = ({ navigation }: any) => {
 
     const onRead = (read: BarCodeReadEvent) => {
         try {
-            // TODO: Check if we can really discard the first 5 bytes
-            const decodedRaw = read.rawData?.replace(/ec11/g, '').substr(5);
-            const base64 = Buffer.from(decodedRaw!, 'hex').toString('base64');
+            const dataLength = parseInt(read.rawData?.substring(1, 5)!, 16);
+            const rawData = read.rawData?.substring(5);
+            const base64 = Buffer.alloc(dataLength, rawData).toString('base64');
             const data = Gzip.unzip(base64);
             const game = JSON.parse(data);
 
